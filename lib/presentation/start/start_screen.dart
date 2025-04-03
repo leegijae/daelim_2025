@@ -23,7 +23,7 @@ class StartScreen extends StatelessWidget {
         fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.left,
     );
   }
 
@@ -33,7 +33,7 @@ class StartScreen extends StatelessWidget {
       child: Text(
         'Calculate your BMI and stay on top of your wellness journey, effortlessly.',
         style: TextStyle(color: Color(0xffc6c3f9), fontSize: 15),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
       ),
     );
   }
@@ -43,9 +43,7 @@ class StartScreen extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {
-          // TODO: Navigator.push(...) 등으로 다음 화면 이동 처리
-        },
+        onPressed: () {},
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           foregroundColor: Color(0xFF6c63ff),
@@ -77,9 +75,15 @@ class StartScreen extends StatelessWidget {
               const SizedBox(height: 60),
               Image.asset('assets/images/bike.png'),
               const SizedBox(height: 95),
-              _buildTitle(),
+
+              // 왼쪽 정렬 적용 부분
+              Align(alignment: Alignment.centerLeft, child: _buildTitle()),
               const SizedBox(height: 15),
-              _buildDescription(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: _buildDescription(),
+              ),
+
               const SizedBox(height: 40),
               _buildStartButton(),
             ],
