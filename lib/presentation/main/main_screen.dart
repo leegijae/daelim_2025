@@ -1,27 +1,22 @@
+import 'package:daelim_2025/presentation/common/widgets/white_box.dart';
+import 'package:daelim_2025/presentation/main/widgets/in_de_container.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => _MyWidgetState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  Widget _buildContainer() {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-    );
-  }
+class _MyWidgetState extends State<MainScreen> {
+  int _age = 0;
+  int _weight = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff4f3ff),
+      backgroundColor: Color(0xFFF4F3FF),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 30, right: 30, bottom: 90),
@@ -30,15 +25,46 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               SizedBox(height: 35),
               Text('BMI CALCULATOR', style: TextStyle(fontSize: 20)),
+
               Row(
                 spacing: 20,
                 children: [
-                  Expanded(child: _buildContainer()),
-                  Expanded(child: _buildContainer()),
+                  Expanded(
+                    child: InDeContainer(
+                      title: 'age',
+                      value: _age,
+                      onMinus: () {
+                        if (_age > 0) {
+                          setState(() {
+                            _age--;
+                          });
+                        }
+                      },
+                      onPlus: () {
+                        setState(() => _age++);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: InDeContainer(
+                      title: 'Weight (KG)',
+                      value: _weight,
+                      onMinus: () {
+                        if (_weight > 0) {
+                          setState(() {
+                            _weight--;
+                          });
+                        }
+                      },
+                      onPlus: () {
+                        setState(() => _weight++);
+                      },
+                    ),
+                  ),
                 ],
               ),
-              _buildContainer(),
-              _buildContainer(),
+
+              WhiteBox(padding: EdgeInsets.all(25), child: SizedBox.shrink()),
               SizedBox(
                 width: double.infinity,
                 height: 75,
