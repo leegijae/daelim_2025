@@ -1,7 +1,8 @@
-import 'package:daelim_2025/presentation/common/widgets/white_box.dart';
-import 'package:daelim_2025/presentation/main/widgets/circle_icon_button.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:daelim_2025/presentation/main/widgets/circle_icon_button.dart';
+import 'package:daelim_2025/presentation/common/widgets/white_box.dart';
 
 class InDeContainer extends StatelessWidget {
   final String title;
@@ -10,12 +11,12 @@ class InDeContainer extends StatelessWidget {
   final VoidCallback onPlus;
 
   const InDeContainer({
-    super.key,
+    Key? key,
     required this.title,
     required this.value,
     required this.onMinus,
     required this.onPlus,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class InDeContainer extends StatelessWidget {
         children: [
           //타이틀
           Text(title, style: TextStyle(fontSize: 18)),
+          //숫자
           Text(
             '$value',
             style: TextStyle(

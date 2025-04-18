@@ -2,7 +2,9 @@ import 'package:daelim_2025/presentation/common/widgets/white_box.dart';
 import 'package:flutter/material.dart';
 
 class heightBox extends StatefulWidget {
-  const heightBox({super.key});
+  final Function(double height) onChanged;
+
+  const heightBox({super.key, required this.onChanged});
 
   @override
   State<heightBox> createState() => _heightBoxState();
@@ -20,7 +22,7 @@ class _heightBoxState extends State<heightBox> {
           Text('Height (CM)', style: TextStyle(fontSize: 18)),
           //숫자
           Text(
-            '$_height',
+            _height.toStringAsFixed(1),
             style: TextStyle(
               fontSize: 60,
               fontWeight: FontWeight.bold,
@@ -29,14 +31,15 @@ class _heightBoxState extends State<heightBox> {
           ),
           //slider
           Slider(
-            year2023: false,
             value: _height,
             min: 50.0,
             max: 300.0,
+            activeColor: Color(0xFF6C63FF),
             onChanged: (double value) {
               setState(() {
                 _height = value;
               });
+              widget.onChanged(_height);
             },
           ),
         ],
