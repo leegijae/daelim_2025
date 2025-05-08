@@ -36,4 +36,5 @@ enum AppRoute { login, newsList }
 
 extension AppRouteExtension on AppRoute {
   String get path => '/$this';
+  //
 }
